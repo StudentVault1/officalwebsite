@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Student Vault</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-scholar.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 586 Scholar
+
+https://templatemo.com/tm-586-scholar
+
+-->
+
+  <style>
+        /* Updated Courses Section Styles */
+        .courses .events_item .thumb {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .courses .events_item .thumb img {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures proper aspect ratio */
+            transition: transform 0.3s ease;
+        }
+        
+        .courses .events_item:hover .thumb img {
+            transform: scale(1.1);
+        }
+        
+        .courses .events_item .thumb .category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e41c38 !important;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Updated Team Section Styles */
+        .team .team-member .main-content {
+            position: relative;
+            text-align: center;
+        }
+        
+        .team .team-member .main-content img {
+            width: 200px;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures proper aspect ratio */
+            border-radius: 50%; /* Fully rounded */
+            border: 4px solid #e41c38 !important;
+            transition: all 0.3s ease;
+            margin: 0 auto 20px auto;
+            display: block;
+            box-shadow: 0 10px 30px rgba(228, 28, 56, 0.2);
+        }
+        
+        .team .team-member:hover .main-content img {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(228, 28, 56, 0.3);
+        }
+        
+        /* Updated Filter Styles */
+        .event_filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .event_filter li a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event_filter li a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #e41c38 !important;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .event_filter li a:hover,
+        .event_filter li a.is_active {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(228, 28, 56, 0.3);
+        }
+        
+        .event_filter li a:hover:before,
+        .event_filter li a.is_active:before {
+            left: 0;
+        }
+        
+        /* Gallery Section Styles */
+        .gallery {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .gallery .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery .section-heading h6 {
+            color: #e41c38 !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .gallery .section-heading h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #e41c38 0%, #a01529 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(228, 28, 56, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(228, 28, 56, 0.9) 0%, rgba(160, 21, 41, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-content {
+            transform: translateY(0);
+        }
+        
+        .gallery-content h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-content p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-btn:hover {
+            background: white;
+            color: #e41c38 !important;
+            transform: scale(1.1);
+        }
+        
+        .gallery-btn i {
+            font-size: 1.2rem;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .gallery-item:nth-child(odd) {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .gallery-item:nth-child(even) {
+            animation: float 6s ease-in-out infinite reverse;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery .section-heading h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .event_filter {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+/* Font Awesome CDN */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* Bootstrap CDN */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css');
+
+/* Contact Details Section Styles */
+.contact-details {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-details:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e41c38" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+}
+
+.contact-details .section-heading {
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-details .section-heading h6 {
+    color: #e41c38 !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.contact-details .section-heading h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #e41c38 0%, #a01529 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Equal Height Cards - Key Changes */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-info-item {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    
+    /* Equal height properties */
+    height: 320px; /* Fixed height for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-info-item:nth-child(1) { animation-delay: 0.2s; }
+.contact-info-item:nth-child(2) { animation-delay: 0.4s; }
+.contact-info-item:nth-child(3) { animation-delay: 0.6s; }
+
+.contact-info-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(228, 28, 56, 0.1) 0%, rgba(160, 21, 41, 0.1) 100%);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.contact-info-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(228, 28, 56, 0.2);
+}
+
+.contact-info-item:hover:before {
+    left: 0;
+}
+
+.icon-wrapper {
+    margin-bottom: 25px;
+    position: relative;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.icon-wrapper .icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #e41c38 0%, #a01529 100%);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    box-shadow: 0 10px 30px rgba(228, 28, 56, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.contact-info-item:hover .icon {
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 15px 40px rgba(228, 28, 56, 0.4);
+}
+
+.contact-info-item .content {
+    flex: 1; /* Allow content to expand and fill remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info-item .content h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+.contact-info-item .content p {
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+    flex: 1; /* Allow paragraph to fill remaining space */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.contact-info-item .content a {
+    color: #e41c38 !important;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item .content a:hover {
+    color: #a01529 !important;
+    text-decoration: underline;
+}
+
+/* Social Connect Section */
+.social-connect, .quick-actions {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    animation-delay: 0.8s;
+    height: 300px; /* Equal height for bottom cards too */
+    display: flex;
+    flex-direction: column;
+}
+
+.social-connect h4, .quick-actions h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.social-icons-large {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    flex: 1;
+    align-items: center;
+}
+
+.social-icon {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon span {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.social-icon.facebook { background: linear-gradient(135deg, #1877f2 0%, #0d4bc4 100%); }
+.social-icon.twitter { background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%); }
+.social-icon.linkedin { background: linear-gradient(135deg, #0077b5 0%, #005885 100%); }
+.social-icon.instagram { background: linear-gradient(135deg, #e4405f 0%, #bc2a8d 100%); }
+.social-icon.youtube { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Quick Actions */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    justify-content: center;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #e41c38 0%, #a01529 100%);
+    color: white;
+}
+
+.action-btn.primary:before {
+    background: linear-gradient(135deg, #a01529 0%, #7d1020 100%);
+}
+
+.action-btn.secondary {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+    color: white;
+}
+
+.action-btn.secondary:before {
+    background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
+}
+
+.action-btn.tertiary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+}
+
+.action-btn.tertiary:before {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.action-btn:hover:before {
+    left: 0;
+}
+
+.action-btn i {
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(228, 28, 56, 0.3);
+    }
+    50% {
+        box-shadow: 0 15px 40px rgba(228, 28, 56, 0.5);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Floating animation for contact items */
+.contact-info-item:nth-child(odd) {
+    animation: slideUp 0.8s ease forwards, float 4s ease-in-out infinite 1s;
+}
+
+.contact-info-item:nth-child(even) {
+    animation: slideUp 0.8s ease forwards, float 4s ease-in-out infinite reverse 1s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-details .section-heading h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-info-item {
+        padding: 30px 20px;
+        height: 280px; /* Smaller height for mobile */
+    }
+    
+    .social-connect, .quick-actions {
+        height: 250px; /* Smaller height for mobile */
+    }
+    
+    .social-icons-large {
+        justify-content: center;
+    }
+    
+    .social-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+    
+    .action-buttons {
+        gap: 10px;
+    }
+    
+    .action-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-details {
+        padding: 60px 0;
+    }
+    
+    .contact-info-item {
+        height: 260px; /* Even smaller for very small screens */
+    }
+    
+    .social-connect, .quick-actions {
+        height: 220px;
+    }
+    
+    .social-icons-large {
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .social-icon span {
+        font-size: 0.6rem;
+    }
+}
+
+    </style>
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/update logo.jpg" alt="Logo" class="logo-image" />
+                        <h1>Student <span style="color: black;font-weight: bold;">Vault</span></h1>
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Serach Start ***** -->
+                    <!-- <div class="search-input">
+                      <form id="search" action="#">
+                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+                        <i class="fa fa-search"></i>
+                      </form>
+                    </div> -->
+                    <!-- ***** Serach Start ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                      <li class="scroll-to-section"><a href="#services">Services</a></li>
+                      <li class="scroll-to-section"><a href="#courses">Courses</a></li>
+                      <li class="scroll-to-section"><a href="#team">Team</a></li>
+                      <li class="scroll-to-section"><a href="#events">Events</a></li>
+                      <li class="scroll-to-section"><a href="#contact">Register Now!</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-carousel owl-banner">
+            <div class="item item-1">
+              <div class="header-text">
+                <h2>Welcome to STUDENT VAULT, Your Gateway to Success!</h2>
+                <p>Empowering students with top-tier coaching, courses, and internships. Whether you’re pursuing engineering or looking for hands-on experience, we have everything you need to excel in your career.</p>
+                
+                <ul class="course-highlights">
+                  <li>
+                      <span class="icon">📚</span> 
+                      <strong>Comprehensive Courses:</strong> Master every subject with expert guidance.
+                  </li>
+                  <li>
+                      <span class="icon">🎯</span> 
+                      <strong>Engineering Coaching:</strong> Specialized coaching for all branches.
+                  </li>
+                  <li>
+                      <span class="icon">💼</span> 
+                      <strong>Internship Opportunities:</strong> Gain real-world experience with industry-leading internships.
+                  </li>
+              </ul>
+          
+              </div>
+            </div>
+            <div class="item item-2">
+              <div class="header-text">
+                <h2>Shaping the Future with STUDENT VAULT</h2>
+                <p>At Student Vault, we believe that education is the key to unlocking a world of possibilities. Our mission is to empower students to not just excel academically but also develop the skills, confidence, and experience they need to thrive in the modern world.</p>
+                <ul class="success-stories">
+                  <li>🎓 <strong>Real-World Success:</strong> Over 1,000+ students have successfully secured internships and jobs at top companies.</li>
+                  <li>🏅 <strong>Top Performers:</strong> Our students consistently rank among the best in their engineering branches.</li>
+                  <li>💡 <strong>Innovation at Heart:</strong> We continuously integrate cutting-edge technologies and trends into our courses to prepare you for tomorrow's challenges.</li>
+              </ul>
+              </div>
+            </div>
+            <div class="item item-3">
+              <div class="header-text">
+                <h2>Why Choose Student Vault?</h2>
+                <ul class="features-list">
+                  <li>🎓 <strong>Expert Faculty:</strong> Learn from experienced professionals and industry leaders.</li>
+                  <li>🖥️ <strong>Interactive Learning:</strong> Engaging and practical sessions with hands-on projects.</li>
+                  <li>🤝 <strong>Personalized Mentorship:</strong> One-on-one guidance to help you achieve your goals.</li>
+                  <li>🚀 <strong>Career Assistance:</strong> Resume building, interview prep, and placement support.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services section" id="services">
+    <div class="container">
+      <div class="row">
+        <!-- Service 1: Online Degrees -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-01.png" alt="online degrees">
+            </div>
+            <div class="main-content">
+              <h4>Online Degrees</h4>
+              <p>Access accredited online degrees in engineering and other courses from top universities worldwide.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service 2: Short Courses -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-02.png" alt="short courses">
+            </div>
+            <div class="main-content">
+              <h4>Short Courses</h4>
+              <p>Learn the latest industry trends and technologies with our expertly designed short courses.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service 3: Engineering Coaching -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-03.png" alt="engineering coaching">
+            </div>
+            <div class="main-content">
+              <h4>Engineering Coaching</h4>
+              <p>Receive personalized coaching for all engineering branches to excel in exams and practical applications.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service 4: Internship Opportunities -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-01.png" alt="internship opportunities">
+            </div>
+            <div class="main-content">
+              <h4>Internship Opportunities</h4>
+              <p>Get hands-on industry experience through curated internship programs with top global companies.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service 5: Career Guidance -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-02.png" alt="career guidance">
+            </div>
+            <div class="main-content">
+              <h4>Career Guidance</h4>
+              <p>Receive expert career counseling to plan your future in engineering and technology.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Service 6: Research Projects -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-item">
+            <div class="icon">
+              <img src="assets/images/service-03.png" alt="research projects">
+            </div>
+            <div class="main-content">
+              <h4>Research Projects</h4>
+              <p>Participate in groundbreaking research projects and contribute to advancements in technology.</p>
+              <div class="main-button">
+                <a href="#">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="section about-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-1">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Where shall we begin?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  At STUDENT VAULT, we begin with a strong foundation in engineering fundamentals, ensuring that our students are equipped with the core skills needed to excel in their respective fields. Our platform offers a wide range of courses, from basic concepts to advanced techniques.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  How do we work together?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  At STUDENT VAULT, we work together through a collaborative and interactive approach. Our courses are designed to encourage active participation through projects, assignments, and discussions. We also provide mentorship and career counseling to help you grow professionally.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Why STUDENT VAULT is the best?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  STUDENT VAULT stands out because of its comprehensive, hands-on approach to learning. Our experienced instructors provide guidance tailored to your individual needs, and we leverage the latest technology to make learning more engaging and effective.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Do we get the best support?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Absolutely! Our support team is always available to assist you with any questions or issues. Additionally, we provide a variety of resources such as study materials, FAQs, and forums where you can interact with fellow students and instructors.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <div class="section-heading">
+            <h6>About Us</h6>
+            <h2>What makes STUDENT VAULT the best academy?</h2>
+            <p>At STUDENT VAULT, we are dedicated to providing top-quality online education in engineering and technology. Our innovative curriculum, expert instructors, and hands-on learning experiences set us apart from other platforms. Join us and be part of a community that is shaping the future of technology!</p>
+            <div class="main-button">
+              <a href="#">Discover More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Updated Courses Section -->
+<section class="section courses" id="courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h6>Latest Courses</h6>
+                    <h2>Latest Courses</h2>
+                </div>
+            </div>
+        </div>
+        <ul class="event_filter">
+            <li>
+                <a class="is_active" href="#!" data-filter="*">Show All</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".webdesign">Web Design</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".development">Development</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".ai">AI & ML</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".cloud">Cloud Computing</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".data">Data Science</a>
+            </li>
+            <li>
+                <a href="#!" data-filter=".security">Cybersecurity</a>
+            </li>
+        </ul>
+        <div class="row event_box">
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer webdesign">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/course-01.jpg" alt=""></a>
+                        <span class="category">Web Design</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Learn Web Design</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer development">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/course-02.jpg" alt=""></a>
+                        <span class="category">Development</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Web Development Tips</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer ai">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/ai-image.jpg" alt=""></a>
+                        <span class="category">AI & ML</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Teach machines to think</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer cloud">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/cloud-computing.jpg" alt=""></a>
+                        <span class="category">Cloud Computing</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Power up with the cloud</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer data">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/course-05.jpg" alt=""></a>
+                        <span class="category">Data Science</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Decode data. Drive decisions</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 align-self-center mb-30 event_outer security">
+                <div class="events_item">
+                    <div class="thumb">
+                        <a href="#"><img src="assets/images/ethical-hacking.jpg" alt=""></a>
+                        <span class="category">Ethical Hacking</span>
+                    </div>
+                    <div class="down-content">
+                        <h4>Hack smart. Defend better</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <div class="section fun-facts">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="wrapper">
+            <div class="row">
+              <div class="col-lg-3 col-md-6">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
+                   <p class="count-text ">Happy Students</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
+                  <p class="count-text ">Course Hours</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="counter">
+                  <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                  <p class="count-text ">Employed Students</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="counter end">
+                  <h2 class="timer count-title count-number" data-to="4" data-speed="1000"></h2>
+                  <p class="count-text ">Years Experience</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Updated Team Section -->
+<div class="team section" id="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                    <div class="main-content">
+                        <img src="assets/NewImages/MNR.JPG" alt="">
+                        <span class="category">Founder</span>
+                        <h4>Nishanth Reddy</h4>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/nishanth-reddy-mankala-794a90279/"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                    <div class="main-content">
+                        <img src="assets/NewImages/khaiser1.jpg" alt="">
+                        <span class="category">Data Analytics</span>
+                        <h4>Abdul khaiser</h4>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/mohammed-abdul-khaiser-6369b7246"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                    <div class="main-content">
+                        <img src="assets/NewImages/fayaz.jpg" alt="">
+                        <span class="category">Cloud Computing</span>
+                        <h4>Sheikh Fayaz Hussain</h4>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/sheikh-fayaz"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                    <div class="main-content">
+                        <img src="assets/NewImages/abhilash.jpg" alt="">
+                        <span class="category">Full Stack Developer</span>
+                        <h4>Abhilash Thummoju</h4>
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/abhilash-thummoju-5a449a234/"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="section testimonials">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="owl-carousel owl-testimonials">
+            <div class="item">
+              <p>“The instructors are supportive and the content is top-notch. Their AI & Machine Learning course helped me land an internship within 3 months!”</p>
+              <div class="author">
+                <img src="assets/NewImages/customer-testimonial.jpg" alt="">
+                <span class="category">Student</span>
+                <h4>Anjali R, B.Tech CSE, Hyderabad</h4>
+              </div>
+            </div>
+            <div class="item">
+              <p>“From cloud computing basics to hands-on projects, I learned everything I needed to kickstart my IT career. Highly recommend Student Vault!”</p>
+              <div class="author">
+                <img src="assets/NewImages/customer-testimonial.jpg" alt="">
+                <span class="category">Student</span>
+                <h4>Rohit M, ECE Graduate, Hyderabad</h4>
+              </div>
+            </div>
+            <div class="item">
+              <p>“As a full-time student, I needed flexible timings. Student Vault’s self-paced ethical hacking course was practical, engaging, and industry-relevant.”</p>
+              <div class="author">
+                <img src="assets/NewImages/customer-testimonial.jpg" alt="">
+                <span class="category">Student</span>
+                <h4>Vamsi K, Mechanical Engineering, Hyderabad</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 align-self-center">
+          <div class="section-heading">
+            <h6>TESTIMONIALS</h6>
+            <h2>What they say about us?</h2>
+            <p>Real stories. Real success.<br>
+Here’s what our learners have to say about their experience at Student Vault—from mastering cutting-edge technologies to achieving career goals, we’re proud to be part of their journey.
+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section events" id="events">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="section-heading">
+            <h6>Schedule</h6>
+            <h2>Upcoming Events</h2>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="image">
+                  <img src="assets/images/event-01.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <ul>
+                  <li>
+                    <span class="category">Web Design</span>
+                    <h4>UI Best Practices</h4>
+                  </li>
+                  <li>
+                    <span>Date:</span>
+                    <h6>13 July 2025</h6>
+                  </li>
+                  <li>
+                    <span>Duration:</span>
+                    <h6>8 Hours</h6>
+                  </li>
+                  <!-- <li>
+                    <span>Price:</span>
+                    <h6>$120</h6>
+                  </li> -->
+                </ul>
+                <a href="#"><i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="image">
+                  <img src="assets/images/event-02.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <ul>
+                  <li>
+                    <span class="category">AI & ML</span>
+                    <h4>Workshop on Building ML Algorithms</h4>
+                  </li>
+                  <li>
+                    <span>Date:</span>
+                    <h6>20 July 2025</h6>
+                  </li>
+                  <li>
+                    <span>Duration:</span>
+                    <h6>12 Hours</h6>
+                  </li>
+                  <!-- <li>
+                    <span>Price:</span>
+                    <h6>$320</h6>
+                  </li> -->
+                </ul>
+                <a href="#"><i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-6">
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="image">
+                  <img src="assets/images/event-03.jpg" alt="">
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <ul>
+                  <li>
+                    <span class="category">Full Stack</span>
+                    <h4>Web Programming</h4>
+                  </li>
+                  <li>
+                    <span>Date:</span>
+                    <h6>25 July 2025</h6>
+                  </li>
+                  <li>
+                    <span>Duration:</span>
+                    <h6>8 Hours</h6>
+                  </li>
+                  <!-- <li>
+                    <span>Price:</span>
+                    <h6>$440</h6>
+                  </li> -->
+                </ul>
+                <a href="#"><i class="fa fa-angle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- New Gallery Section -->
+<div class="section gallery" id="gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h6>Gallery</h6>
+                    <h2>Our Learning Environment</h2>
+                    <p>Take a glimpse into our vibrant learning community, where innovation meets education and students transform their careers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image1.JPG" alt="Modern Classroom">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Modern Classrooms</h4>
+                        <p>State-of-the-art learning spaces equipped with latest technology</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image2.JPG" alt="AI Lab">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>AI Laboratory</h4>
+                        <p>Hands-on experience with cutting-edge AI and ML technologies</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image3.JPG" alt="Cloud Infrastructure">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Cloud Infrastructure</h4>
+                        <p>Learn cloud computing with real enterprise-grade platforms</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image4.jpeg" alt="Development Studio">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Development Studio</h4>
+                        <p>Collaborative coding environment for full-stack development</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image9.jpeg" alt="Data Analytics Center">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Data Analytics Center</h4>
+                        <p>Advanced tools for big data analysis and visualization</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image6.JPG" alt="Cybersecurity Lab">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Cybersecurity Lab</h4>
+                        <p>Secure environment for ethical hacking and penetration testing</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image7.jpeg" alt="Cybersecurity Lab">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Cybersecurity Lab</h4>
+                        <p>Secure environment for ethical hacking and penetration testing</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="gallery-item">
+                <img src="assets/galleryImages/gallery-image8.jpeg" alt="Cybersecurity Lab">
+                <div class="gallery-overlay">
+                    <div class="gallery-content">
+                        <!-- <h4>Cybersecurity Lab</h4>
+                        <p>Secure environment for ethical hacking and penetration testing</p> -->
+                        <a href="#" class="gallery-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="contact-us section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6  align-self-center">
+          <div class="section-heading">
+            <h6>Contact Us</h6>
+            <h2>Feel free to contact us anytime</h2>
+            <p>At Student Vault, we’re committed to supporting your learning journey. Whether you're exploring our engineering courses, want help choosing the right path, or simply need more details—reach out to us anytime. Our team is ready to assist you with quick responses and expert advice.</p>
+            <div class="special-offer">
+              <span class="offer">off<br><em>50%</em></span>
+              <h6>Valide: <em>15 July 2025</em></h6>
+              <h4>Special Offer <em>50%</em> OFF!</h4>
+              <a href="#"><i class="fa fa-angle-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="contact-us-content">
+            <form id="contact-form" action="" method="post">
+              <div class="row">
+                <div class="col-lg-12">
+                  <fieldset>
+                    <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                  </fieldset>
+                </div>
+                <div class="col-lg-12">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="orange-button">Send Message Now</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Contact Details Section -->
+<div class="section contact-details" id="contact-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h6>Get In Touch</h6>
+                    <h2>Contact Information</h2>
+                    <p>Ready to start your learning journey? Reach out to us through any of these channels and let's shape your future together.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-item">
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>Visit Our Campus</h4>
+                        <p> Hyderabad, Telangana 500001<br>
+                        India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-item">
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>Call Us Now</h4>
+                        <p>Main Office: <a href="tel:+919876543210">+91 91218 40160</a><br>
+                        WhatsApp: <a href="https://wa.me/9121840160">+91 91218 40160</a><br>
+                        Available: Mon-Sat, 9AM-8PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-item">
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>Email Support</h4>
+                        <p>General Inquiries:<br>
+                        <a href="mailto:info@studentvault.com">info@studentvault.com</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Social Media & Quick Links -->
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <div class="social-connect">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons-large">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="quick-actions">
+                    <h4>Quick Actions</h4>
+                    <div class="action-buttons">
+                        <a href="#" class="action-btn primary">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule a Call</span>
+                        </a>
+                        <a href="#" class="action-btn secondary">
+                            <i class="fas fa-download"></i>
+                            <span>Download Brochure</span>
+                        </a>
+                        <a href="#" class="action-btn tertiary">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Watch Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2025 StudentVault Education. All rights reserved. &nbsp;&nbsp;&nbsp;</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+// Enhanced Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.event_filter a');
+    const courseItems = document.querySelectorAll('.event_outer');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('is_active'));
+            // Add active class to clicked button
+            this.classList.add('is_active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            courseItems.forEach(item => {
+                if (filterValue === '*' || item.classList.contains(filterValue.replace('.', ''))) {
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                    }, 100);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Gallery hover effects
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseover', function() {
+            this.style.transform = 'translateY(-15px) scale(1.03)';
+        });
+        
+        item.addEventListener('mouseout', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+</script>
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/custom.js"></script>
+
+  </body>
+</html>
