@@ -711,6 +711,99 @@ https://templatemo.com/tm-586-scholar
     }
 }
 
+@media (max-width: 768px) {
+  .features-list li {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .course-highlights li {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .success-stories li {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 50px;
+  }
+}
+
+/* Styling for the View All Courses Button */
+.course-action-button {
+    margin-top: 30px; /* Adjust spacing as needed */
+    text-align: center;
+}
+
+.view-all-courses-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #e41c38; /* Your specified theme color */
+    color: #fff;
+    border-radius: 8px; /* Slightly more rounded corners */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.view-all-courses-btn:hover {
+    color: #fff !important; /* Ensure text color remains white on hover */
+    transform: translateY(-3px); /* Lift button slightly on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Animation for the button background */
+.view-all-courses-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start from left outside */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); /* Subtle shine effect */
+    transition: all 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.view-all-courses-btn:hover::before {
+    left: 100%; /* Move shine across to the right */
+}
+
+/* Subtle border animation on hover */
+.view-all-courses-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.4s ease-in-out;
+    z-index: 2; /* Keep above the background shine but below the text */
+    pointer-events: none; /* Ensure it doesn't block clicks */
+}
+
+.view-all-courses-btn:hover::after {
+    border-color: rgba(255, 255, 255, 0.7); /* White border on hover */
+}
+
+/* General spacing adjustment for the button container */
+.col-lg-12.text-center.mt-5 {
+    padding-top: 20px; /* Additional space above the button */
+}
+
+
     </style>
   </head>
 
@@ -991,7 +1084,6 @@ https://templatemo.com/tm-586-scholar
     </div>
   </div>
   
-<!-- Updated Courses Section -->
 <section class="section courses" id="courses">
     <div class="container">
         <div class="row">
@@ -1093,8 +1185,14 @@ https://templatemo.com/tm-586-scholar
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 text-center mt-5">
+            <div class="course-action-button">
+                <a href="courses.html" class="view-all-courses-btn">View All Courses</a>
+            </div>
+        </div>
     </div>
 </section>
+
 
   <div class="section fun-facts">
     <div class="container">
