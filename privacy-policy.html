@@ -5,65 +5,123 @@
   <title>Privacy Policy | Student Vault</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f9f9f9;
+    :root {
+      --primary-color: #e41c38;
+      --light-gray: #f5f5f5;
+      --text-color: #333;
+      --font-main: 'Segoe UI', sans-serif;
     }
 
+    body {
+      font-family: var(--font-main);
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-gray);
+      color: var(--text-color);
+    }
+
+    /* Header */
     header {
-      background-color: #e41c38;
-      color: #fff;
-      padding: 15px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     header h1 {
       margin: 0;
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: 600;
     }
 
     .back-button {
-      color: white;
+      background-color: white;
+      color: var(--primary-color);
       text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      background-color: #c9142d;
-      padding: 8px 12px;
-      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 16px;
+      border-radius: 5px;
+      transition: 0.3s ease;
     }
 
+    .back-button:hover {
+      background-color: #ffced4;
+    }
+
+    /* Container */
     .container {
-      padding: 30px 20px;
       max-width: 900px;
-      margin: auto;
-      background-color: #fff;
+      background-color: white;
+      margin: 40px auto;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
-    h2 {
-      color: #e41c38;
-      margin-top: 20px;
+    .container h2 {
+      color: var(--primary-color);
+      margin-top: 30px;
+      font-size: 22px;
+      border-bottom: 2px solid #f4d4d4;
+      padding-bottom: 6px;
     }
 
-    footer {
-      background-color: #e41c38;
-      color: white;
-      text-align: center;
-      padding: 15px 20px;
-      margin-top: 50px;
+    .container p, .container li {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
 
     a {
-      color: #e41c38;
+      color: var(--primary-color);
       text-decoration: none;
+      font-weight: 500;
     }
 
     a:hover {
       text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 20px 30px;
+      font-size: 14px;
+      margin-top: 60px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .container {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+
+      .back-button {
+        font-size: 13px;
+        padding: 8px 12px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -124,7 +182,7 @@
     <h2>8. Contact Us</h2>
     <p>If you have any questions or concerns about this policy, reach out to us at:</p>
     <p><strong>Email:</strong> <a href="mailto:info@studentvault.com">info@studentvault.com</a><br>
-    <strong>Phone:</strong> <a href="tel:+919121840160">+91 91218 40160</a></p>
+       <strong>Phone:</strong> <a href="tel:+919121840160">+91 91218 40160</a></p>
   </div>
 
   <!-- Footer -->
